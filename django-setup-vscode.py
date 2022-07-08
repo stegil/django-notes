@@ -4,7 +4,7 @@ import sys
 def print_steps(steps):
     for step in steps:
         print(f"- {step}")
-    input("Press Enter to continue: ")
+    input("Press Enter to continue: \n")
 
 
 class CreateGitHubRepository(object):
@@ -118,9 +118,19 @@ class RunWebServer(object):
         print_steps(steps=steps)
 
 
+class CreateNewApp(object):
+    def run(self, context):
+        steps = [
+            "Change to the project directory",
+            f"Run 'python3 manage.py startapp {context['app_name']}'",
+        ]
+        print_steps(steps=steps)
+
+
 if __name__ == "__main__":
     context = {
-        "project_name": input("Enter a project name: ") or "<project_name>",
+        "project_name": "<project_name>",
+        "app_name": "<app_name>",
     }
     procedure = [
         CreateGitHubRepository(),
@@ -133,6 +143,7 @@ if __name__ == "__main__":
         RunMigrations(),
         VSCodeDebugLaunchFile(),
         RunWebServer(),
+        CreateNewApp(),
     ]
     for step in procedure:
         step.run(context)
