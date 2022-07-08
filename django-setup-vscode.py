@@ -88,6 +88,15 @@ class CreateNewApp(object):
         print_steps(steps=steps)
 
 
+class CreateTemplatesFolder(object):
+    def run(self, context):
+        steps = [
+            "Create 'templates' folder at the same directory level as the app",
+            "In settings.py, add to TEMPLATES: 'DIRS': [BASE_DIR / 'templates'],  # new'",
+        ]
+        print_steps(steps=steps)
+
+
 class SettingsConfig(object):
     def run(self, context):
         steps = [
@@ -141,6 +150,7 @@ if __name__ == "__main__":
         GenerateDjangoProject(),
         DotEnv(),
         CreateNewApp(),
+        CreateTemplatesFolder(),
         SettingsConfig(),
         RunMigrations(),
         VSCodeDebugLaunchFile(),
