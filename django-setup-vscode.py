@@ -78,6 +78,16 @@ class DotEnv(object):
         print_steps(steps=steps)
 
 
+class CreateNewApp(object):
+    def run(self, context):
+        steps = [
+            "Change to the project directory",
+            f"Run 'python3 manage.py startapp {context['app_name']}'",
+            f"add to settings.py/INSTALLED_APPS '{context['app_name']}.apps.PagesConfig'",
+        ]
+        print_steps(steps=steps)
+
+
 class SettingsConfig(object):
     def run(self, context):
         steps = [
@@ -118,15 +128,6 @@ class RunWebServer(object):
         print_steps(steps=steps)
 
 
-class CreateNewApp(object):
-    def run(self, context):
-        steps = [
-            "Change to the project directory",
-            f"Run 'python3 manage.py startapp {context['app_name']}'",
-        ]
-        print_steps(steps=steps)
-
-
 if __name__ == "__main__":
     context = {
         "project_name": "<project_name>",
@@ -139,11 +140,11 @@ if __name__ == "__main__":
         PipInstallRequirements(),
         GenerateDjangoProject(),
         DotEnv(),
+        CreateNewApp(),
         SettingsConfig(),
         RunMigrations(),
         VSCodeDebugLaunchFile(),
         RunWebServer(),
-        CreateNewApp(),
     ]
     for step in procedure:
         step.run(context)
