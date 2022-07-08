@@ -59,8 +59,7 @@ class PipInstallRequirements(object):
 class GenerateDjangoProject(object):
     def run(self, context):
         steps = [
-            f"Run 'django-admin startproject {context['project_name']} .'",
-            "the '.' is crucial to telling the script to install in the current directory",
+            f"Run 'django-admin startproject {context['project_name']}'",
         ]
         print_steps(steps=steps)
 
@@ -70,6 +69,7 @@ class DotEnv(object):
         steps = [
             ".env Updates:",
             "Open settings.py",
+            "Add 'import os'",
             "Add 'from dotenv import load_dotenv'",
             "Add 'load_dotenv()",
             "Move the SECRET_KEY to a .env file in root",
@@ -82,12 +82,11 @@ class SettingsConfig(object):
     def run(self, context):
         steps = [
             "Change settings.py",
-            "Add 'import os'",
             "TIME_ZONE = 'America/Los_Angeles",
             "LANGUAGE_CODE = 'en-us",
-            "STATIC_URL = '/static/",
-            "STATIC_ROOT = BASE_DIR / 'static'",
-            "ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']",
+            # "STATIC_URL = 'static/",
+            # "STATIC_ROOT = BASE_DIR / 'static'",
+            # "ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']",
         ]
         print_steps(steps=steps)
 
