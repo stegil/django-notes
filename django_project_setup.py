@@ -7,7 +7,7 @@ def print_steps(steps):
     input("Press Enter to continue: \n")
 
 
-class CreateGitHubRepository(object):
+class CreateGitHubRepository:
     def run(self, context):
         steps = [
             "Log into GitHub",
@@ -17,7 +17,7 @@ class CreateGitHubRepository(object):
         print_steps(steps=steps)
 
 
-class CloneRepository(object):
+class CloneRepository:
     def run(self, context):
         steps = [
             "Open VSCode and press cmd+shift+P",
@@ -28,7 +28,7 @@ class CloneRepository(object):
         print_steps(steps=steps)
 
 
-class CreateVenv(object):
+class CreateVenv:
     def run(self, context):
         steps = [
             "Press cmd+shift+P",
@@ -42,7 +42,7 @@ class CreateVenv(object):
         print_steps(steps=steps)
 
 
-class PipInstallRequirements(object):
+class PipInstallRequirements:
     def run(self, context):
         steps = [
             "Press cmd+shift+P",
@@ -56,7 +56,7 @@ class PipInstallRequirements(object):
         print_steps(steps=steps)
 
 
-class GenerateDjangoProject(object):
+class GenerateDjangoProject:
     def run(self, context):
         steps = [
             f"Run 'django-admin startproject {context['project_name']}'",
@@ -64,7 +64,7 @@ class GenerateDjangoProject(object):
         print_steps(steps=steps)
 
 
-class DotEnv(object):
+class DotEnv:
     def run(self, context):
         steps = [
             ".env Updates:",
@@ -78,26 +78,26 @@ class DotEnv(object):
         print_steps(steps=steps)
 
 
-class CreateNewApp(object):
+class CreateNewApp:
     def run(self, context):
         steps = [
             "Change to the project directory",
-            f"Run 'python3 manage.py startapp {context['app_name']}'",
-            f"add to settings.py/INSTALLED_APPS '{context['app_name']}.apps.PagesConfig'",
+            "Run 'python3 manage.py startapp <appname>'",
+            "add to settings.py/INSTALLED_APPS '<appname>.apps.<App>Config'",
         ]
         print_steps(steps=steps)
 
 
-class CreateTemplatesFolder(object):
+class CreateTemplatesFolder:
     def run(self, context):
         steps = [
             "Create 'templates' folder at the same directory level as the app",
-            "In settings.py, add to TEMPLATES: 'DIRS': [BASE_DIR / 'templates'],  # new'",
+            "In settings.py, add to TEMPLATES: 'DIRS': [BASE_DIR / 'templates'],  # new",
         ]
         print_steps(steps=steps)
 
 
-class SettingsConfig(object):
+class SettingsConfig:
     def run(self, context):
         steps = [
             "Change settings.py",
@@ -110,7 +110,7 @@ class SettingsConfig(object):
         print_steps(steps=steps)
 
 
-class RunMigrations(object):
+class RunMigrations:
     def run(self, context):
         steps = [
             "Create the database, 'python manage.py migrate'",
@@ -118,7 +118,7 @@ class RunMigrations(object):
         print_steps(steps=steps)
 
 
-class VSCodeDebugLaunchFile(object):
+class VSCodeDebugLaunchFile:
     def run(self, context):
         steps = [
             "Navigate to debug window and select 'create a launch.json file",
@@ -128,7 +128,7 @@ class VSCodeDebugLaunchFile(object):
         print_steps(steps=steps)
 
 
-class RunWebServer(object):
+class RunWebServer:
     def run(self, context):
         steps = [
             "Start the web server",
