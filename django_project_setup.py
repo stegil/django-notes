@@ -51,7 +51,7 @@ class PipInstallRequirements:
             "Run 'pip install -r requirements.txt",
             "Requirements should include....",
             "Django, black, python-dotenv",
-            "Run 'pip freeze requirements.txt'",
+            "Run 'pip freeze > requirements.txt'",
         ]
         print_steps(steps=steps)
 
@@ -92,7 +92,7 @@ class CreateTemplatesFolder:
     def run(self, context):
         steps = [
             "Create 'templates' folder at the same directory level as the app",
-            "In settings.py, add to TEMPLATES: 'DIRS': [BASE_DIR / 'templates'],  # new",
+            "In settings.py, add to TEMPLATES: 'DIRS': [BASE_DIR / 'templates']",
         ]
         print_steps(steps=steps)
 
@@ -137,6 +137,15 @@ class RunWebServer:
         print_steps(steps=steps)
 
 
+class CreateSuperUser:
+    def run(self, context):
+        steps = [
+            "From python terminal:",
+            "   'python manage.py createsuperuser",
+        ]
+        print_steps(steps=steps)
+
+
 if __name__ == "__main__":
     context = {
         "project_name": "<project_name>",
@@ -154,7 +163,8 @@ if __name__ == "__main__":
         SettingsConfig(),
         RunMigrations(),
         VSCodeDebugLaunchFile(),
-        RunWebServer(),
+        # RunWebServer(),
+        CreateSuperUser(),
     ]
     for step in procedure:
         step.run(context)
